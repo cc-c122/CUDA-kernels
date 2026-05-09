@@ -63,6 +63,8 @@ float blockReduceSum(float val){
         shared[wid] = val;
     }
 
+    __syncthreads();
+
     int numWarps = (blockDim.x + 31) / 32;
 
     val = (threadIdx.x < numWarps) ? shared[lane] : -0.0f;
@@ -75,6 +77,8 @@ float blockReduceSum(float val){
         shared[0] = val;
     }
 
+    __syncthreads();
+    
     return shared[0];
 }
 
@@ -83,7 +87,7 @@ void softmax_row_kernel(const float*__restrict__ input, float* __restrict__ outp
     int row = blockIdx.x;
     int tid = threadIdx.x;
     
-    if(row > rows) return;
+    if(row >= rows) return;
 
     const float* row_input = input + row*cols;
     float* row_output = output + row*cols;
