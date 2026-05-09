@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build CUDA Program",
+            "type": "shell",
+            "command": "nvcc",
+            "args": [
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe",
+                "-I", "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.1/include",
+                "-L", "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.1/lib/x64",
+                "-lcudart"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
