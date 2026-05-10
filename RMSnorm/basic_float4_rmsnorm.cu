@@ -58,7 +58,7 @@ int rows, int cols, float eps){
     
     float local_sumsq = 0.0f;
     
-    for(int col4 = tid; col4 > 0; col4 += blockDim.x){
+    for(int col4 = tid; col4 < cols4; col4 += blockDim.x){
         float4 vx = row_x4[col4];
 
         local_sumsq += vx.x * vx.x;
@@ -86,9 +86,9 @@ int rows, int cols, float eps){
 
         float4 vy;
         vy.x = vx.x * inv_rms * vw.x;
-        vy.y = vy.y * inv_rms * vw.y;
-        vy.z = vy.z * inv_rms * vw.z;
-        vy.w = vy.w * inv_rms * vw.w;
+        vy.y = vx.y * inv_rms * vw.y;
+        vy.z = vx.z * inv_rms * vw.z;
+        vy.w = vx.w * inv_rms * vw.w;
 
         row_y4[col4] = vy;
     }
