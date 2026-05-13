@@ -1,10 +1,11 @@
 {
     "configurations": [
         {
-            "name": "Win32",
+            "name": "Win32-CUDA",
             "includePath": [
                 "${default}",
-                "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.1\\include"
+                "${workspaceFolder}/**",
+                "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.1/include"
             ],
             "defines": [
                 "_DEBUG",
@@ -13,7 +14,7 @@
                 "__CUDACC__",
                 "__CUDA_ARCH__=890"
             ],
-            "compilerPath": "C:\\mingw64\\bin\\gcc.exe",
+            "compilerPath": "C:/mingw64/bin/g++.exe",
             "cStandard": "c17",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-gcc-x64"

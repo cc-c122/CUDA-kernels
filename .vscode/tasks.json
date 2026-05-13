@@ -7,11 +7,12 @@
             "command": "nvcc",
             "args": [
                 "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.exe",
+                "-o", "${fileDirname}/${fileBasenameNoExtension}.exe",
                 "-I", "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.1/include",
                 "-L", "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.1/lib/x64",
-                "-lcudart"
+                "-lcudart",
+                "-g", "-G",           
+                "-arch=sm_89"         
             ],
             "group": {
                 "kind": "build",
